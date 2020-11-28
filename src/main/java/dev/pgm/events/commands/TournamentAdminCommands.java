@@ -1,7 +1,7 @@
 package dev.pgm.events.commands;
 
 import dev.pgm.events.TournamentManager;
-import dev.pgm.events.team.ConfigTeamParser;
+import dev.pgm.events.api.teams.TournamentTeamRegistry;
 import dev.pgm.events.team.TournamentPlayer;
 import dev.pgm.events.team.TournamentTeam;
 import dev.pgm.events.team.TournamentTeamManager;
@@ -33,8 +33,12 @@ public class TournamentAdminCommands {
   }
 
   @Command(aliases = "register", desc = "Register a team", usage = "<team>", perms = "events.staff")
-  public void register(CommandSender sender, TournamentTeamManager teamManager, @Text String name) {
-    TournamentTeam team = ConfigTeamParser.getInstance().getTeam(name);
+  public void register(
+      CommandSender sender,
+      TournamentTeamRegistry teamRegistry,
+      TournamentTeamManager teamManager,
+      @Text String name) {
+    TournamentTeam team = teamRegistry.getTeam(name);
     if (team == null) { // TODO move to provider
       sender.sendMessage(ChatColor.RED + "Team not found!");
       return;
@@ -53,7 +57,7 @@ public class TournamentAdminCommands {
   }
 
   @Command(aliases = "list", desc = "List all loaded teams", perms = "events.staff")
-  public void list(CommandSender sender) {
+  public void list(CommandSender sender, TournamentTeamRegistry registry) {
     sender.sendMessage(
         ChatColor.GOLD
             + "------- "
@@ -61,7 +65,7 @@ public class TournamentAdminCommands {
             + "Registered Teams"
             + ChatColor.GOLD
             + " -------");
-    for (TournamentTeam team : ConfigTeamParser.getInstance().getTeams())
+    for (TournamentTeam team : registry.getTeams())
       sender.sendMessage(ChatColor.AQUA + "- " + team.getName());
     sender.sendMessage(ChatColor.YELLOW + "Run /tourney info <team> to see player roster!");
   }
@@ -71,8 +75,8 @@ public class TournamentAdminCommands {
       desc = "View information about a team",
       usage = "<team",
       perms = "events.staff")
-  public void info(CommandSender sender, @Text String name) {
-    TournamentTeam team = ConfigTeamParser.getInstance().getTeam(name);
+  public void info(CommandSender sender, TournamentTeamRegistry registry, @Text String name) {
+    TournamentTeam team = registry.getTeam(name);
     if (team == null) {
       sender.sendMessage(ChatColor.RED + "Team not found!");
       return;
