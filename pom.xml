@@ -12,6 +12,10 @@
 			<id>ashcon-repo</id>
 			<url>https://repo.ashcon.app/content/repositories/snapshots</url>
 		</repository>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
@@ -21,15 +25,15 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>tc.oc.pgm</groupId>
+			<groupId>com.github.applenick.pgm</groupId>
 			<artifactId>core</artifactId>
-			<version>0.14-SNAPSHOT</version>
+			<version>community-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>tc.oc.pgm</groupId>
+			<groupId>com.github.applenick.pgm</groupId>
 			<artifactId>util</artifactId>
-			<version>0.14-SNAPSHOT</version>
+			<version>community-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
