@@ -1,7 +1,6 @@
 package dev.pgm.events.team;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import org.bukkit.ChatColor;
