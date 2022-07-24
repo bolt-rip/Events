@@ -122,7 +122,8 @@ public class DefaultTeamManager implements TournamentTeamManager {
           Optional<Team> matchTeam = fromTournamentTeam(tournamentTeam);
           matchTeam.ifPresent(
               team -> {
-                List<? extends TournamentPlayer> toAssign = tournamentTeam.getPlayers();
+                List<? extends TournamentPlayer> toAssign =
+                    new ArrayList<>(tournamentTeam.getPlayers());
                 team.getPlayers()
                     .forEach(
                         player -> {
