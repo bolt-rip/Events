@@ -44,5 +44,5 @@ public interface TournamentTeamManager {
 
   Collection<? extends TournamentTeam> teams();
 
-  void syncTeams(List<? extends TournamentTeam> teams);
+  void syncTeams();
 }

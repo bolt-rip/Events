@@ -113,7 +113,7 @@ public class DefaultTeamManager implements TournamentTeamManager {
   }
 
   @Override
-  public void syncTeams(List<? extends TournamentTeam> teams) {
+  public void syncTeams() {
     List<MatchPlayer> unassigned = new ArrayList<>();
 
     teams.forEach(
